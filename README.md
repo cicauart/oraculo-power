@@ -28,8 +28,8 @@ Consulta `requirements.txt` para las dependencias necesarias.
     ├── kits_voice.py  # integración con Kits.AI
     ├── lyric_ai.py    # generación de letras y prompts
     ├── database.py    # base de datos ligera
-    ├── telegram_bot.py# envío a Telegram
-    ├── web_recorder.py# servidor para grabar audio desde el navegador
+    ├── telegram_bot.py  # envío a Telegram
+    ├── web_recorder.py  # servidor para grabar audio desde el navegador
 ```
 
 ### Variables de entorno

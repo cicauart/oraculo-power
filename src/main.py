@@ -2,7 +2,7 @@
 from .omi_listener import record_reference
 from .lyric_ai import generate_lyrics
 from .songbloom import create_song
-from .rvc import apply_voice_model
+from .kits_voice import apply_voice_model
 from .telegram_bot import send_audio
 from .database import save_reference
 

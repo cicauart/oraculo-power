@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Grabador</title></head>
+<body>
+<h1>Grabar audio</h1>
+<button id="record">⏺️ Grabar</button>
+<button id="stop" disabled>⏹️ Detener</button>
+<script>
+let rec,chunks;
+record.onclick=async()=>{
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  rec=new MediaRecorder(stream);chunks=[];
+  rec.ondataavailable=e=>chunks.push(e.data);
+  rec.start();
+  record.disabled=true; stop.disabled=false;
+};
+stop.onclick=()=>{
+  rec.stop();
+  stop.disabled=true; record.disabled=false;
+  rec.onstop=async()=>{
+    const blob=new Blob(chunks,{type:'audio/webm'});
+    const form=new FormData();
+    form.append('file',blob,'record.webm');
+    await fetch('/upload',{method:'POST',body:form});
+    alert('Audio enviado');
+  };
+};
+</script>
+</body></html>
